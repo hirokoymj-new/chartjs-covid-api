@@ -9,20 +9,28 @@ import { Country } from "./types";
 import { BarChart } from "./components/BarChart";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
+import { count } from "console";
 
 const App: React.FunctionComponent = () => {
   const [data, setData] = useState<ResponseData | undefined>(undefined);
   const [activeCountry, setActiveCountry] = useState<Country[]>([]);
 
   const fetchData = async () => {
-    const result = await fetch("https://api.covid19api.com/summary");
-    const data: ResponseData = await result.json();
+    const data: ResponseData = await fetch(
+      "https://api.covid19api.com/summary"
+    ).then((response) => response.json());
+    // const data: ResponseData = await result.json();
+
     setData(data);
+    setActiveCountry(
+      data.Countries.filter(
+        (d) => d.CountryCode === "JP" || d.CountryCode === "US"
+      )
+    );
   };
 
   useEffect(() => {
     fetchData();
-    console.log(data);
   }, []);
 
   const onItemClick = (country: Country) => {
@@ -36,7 +44,8 @@ const App: React.FunctionComponent = () => {
       setActiveCountry([...activeCountry, country]);
     }
   };
-  console.log(activeCountry);
+
+  console.log(data);
 
   return (
     <Container maxWidth="lg" style={{ backgroundColor: "lightgrey" }}>
@@ -53,7 +62,7 @@ const App: React.FunctionComponent = () => {
 
           <Grid item xs={12}>
             <Paper>
-              <BarChart />
+              <BarChart countries={activeCountry} />
             </Paper>
           </Grid>
           <Grid container spacing={2}>
