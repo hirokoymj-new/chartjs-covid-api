@@ -6,7 +6,7 @@ interface IProps {
   newRecovered: number;
 }
 
-export const GlobalInfo: React.FC<IProps> = (props) => {
+export const GlobalInfo = (props: IProps) => {
   const { newConfirmed, newDeaths, newRecovered } = props;
   return (
     <>

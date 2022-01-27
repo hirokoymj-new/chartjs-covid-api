@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
-import { Country } from "../types";
+
+import { Country } from "types";
+
 Chart.register(...registerables);
 
 const options = {
@@ -15,12 +16,12 @@ const options = {
 interface IProps {
   countries: Country[];
 }
-export const BarChart: FunctionComponent<IProps> = ({ countries }) => {
+export const BarChart = ({ countries }: IProps) => {
   const getChartData = () => {
     const data: number[] = [];
     const labels: string[] = [];
 
-    countries.map((country) => {
+    const result = countries.map((country) => {
       data.push(country.NewConfirmed);
       labels.push(country.Country);
     });

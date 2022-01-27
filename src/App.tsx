@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { GlobalInfo } from "./components/GlobalInfo";
-import { ResponseData } from "./types";
-import { CountryList } from "./components/CountryList";
-import { CountryItem } from "./components/CountryItem";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import { Country } from "./types";
-import { BarChart } from "./components/BarChart";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
-import { count } from "console";
+
+import { GlobalInfo } from "./components/GlobalInfo";
+import { CountryList } from "components/CountryList";
+import { BarChart } from "components/BarChart";
+import { ResponseData, Country } from "types";
 
 const App: React.FunctionComponent = () => {
   const [data, setData] = useState<ResponseData | undefined>(undefined);

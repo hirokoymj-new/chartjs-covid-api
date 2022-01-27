@@ -1,9 +1,10 @@
-import { Country } from "../types";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+
+import { Country } from "types";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -23,11 +24,11 @@ interface IProps {
   activeCountry: Country[];
 }
 
-export const CountryList: React.FC<IProps> = ({
+export const CountryList = ({
   countries,
   onItemClick,
   activeCountry,
-}) => {
+}: IProps) => {
   const classes = useStyles();
   return (
     <>
