@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 
-import { GlobalInfo } from "./components/GlobalInfo";
+import { GlobalInfo } from "components/GlobalInfo";
 import { CountryList } from "components/CountryList";
 import { BarChart } from "components/BarChart";
 import { ResponseData, Country } from "types";
@@ -17,8 +17,6 @@ const App: React.FunctionComponent = () => {
     const data: ResponseData = await fetch(
       "https://api.covid19api.com/summary"
     ).then((response) => response.json());
-    // const data: ResponseData = await result.json();
-
     setData(data);
     setActiveCountry(
       data.Countries.filter(
@@ -42,8 +40,6 @@ const App: React.FunctionComponent = () => {
       setActiveCountry([...activeCountry, country]);
     }
   };
-
-  console.log(data);
 
   return (
     <Container maxWidth="lg" style={{ backgroundColor: "lightgrey" }}>

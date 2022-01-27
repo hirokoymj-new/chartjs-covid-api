@@ -56,6 +56,38 @@ const config = {
 
 https://react-chartjs-2.netlify.app/examples/vertical-bar-chart
 
+# Line Chart
+
+**Scale Title Configuration**
+
+- [Scale Title Configuration](https://www.chartjs.org/docs/3.7.0/axes/labelling.html#scale-title-configuration)
+
+- [Axes Common Configuration](https://www.chartjs.org/docs/3.7.0/axes/#common-configuration)
+
+```js
+    y: {
+      min: 0, // Default config
+      max: 6,
+      ticks: {
+        stepSize: 1,
+      },
+      title: { // Title config
+        display: true,
+        text: "Y Title",
+        color: "#20B2AA",
+        font: {
+          size: 14,
+          weight: "bold",
+          family: "Arial",
+        },
+      },
+    },
+```
+
+- [In Chart.js set chart title, name of x axis and y axis?](https://stackoverflow.com/questions/27910719/in-chart-js-set-chart-title-name-of-x-axis-and-y-axis)
+
+- [Labeling Axes](https://www.chartjs.org/docs/3.7.0/axes/labelling.html)
+
 # References
 
 **Coronavirus COVID19 API**
