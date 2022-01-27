@@ -85,8 +85,31 @@ https://react-chartjs-2.netlify.app/examples/vertical-bar-chart
 ```
 
 - [In Chart.js set chart title, name of x axis and y axis?](https://stackoverflow.com/questions/27910719/in-chart-js-set-chart-title-name-of-x-axis-and-y-axis)
-
 - [Labeling Axes](https://www.chartjs.org/docs/3.7.0/axes/labelling.html)
+
+# Dataset Properties for Line Chart
+
+**tension**
+
+- `tension: number`
+- streight line or curves
+
+[Dataset Properties](https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
+
+```js
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: "My First Dataset",
+      data: [65, 59, 80, 81, 56, 55, 40],
+      fill: false,
+      borderColor: "rgb(75, 192, 192)",
+      tension: 0.1,
+    },
+  ],
+};
+```
 
 # References
 

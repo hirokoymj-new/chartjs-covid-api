@@ -60,6 +60,7 @@ const data = {
       data: [3, 2, 2, 1, 5],
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
+      tension: 0.4,
     },
     {
       label: "Test Data 2",
