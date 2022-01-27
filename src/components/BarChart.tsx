@@ -21,7 +21,7 @@ export const BarChart = ({ countries }: IProps) => {
     const data: number[] = [];
     const labels: string[] = [];
 
-    const result = countries.map((country) => {
+    countries.forEach((country) => {
       data.push(country.NewConfirmed);
       labels.push(country.Country);
     });
@@ -56,5 +56,3 @@ export const BarChart = ({ countries }: IProps) => {
 
   return <Bar data={getChartData()} options={options} />;
 };
-
-// export default BarChart

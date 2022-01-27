@@ -44,7 +44,9 @@ export const CountryList = ({
               classes={{ root: isActive ? classes.activeCard : classes.card }}
               onClick={() => onItemClick(d)}>
               <CardContent>
-                <Typography variant="subtitle1">{d.Country}</Typography>
+                <Typography variant="subtitle1">
+                  <b>{d.Country}</b>
+                </Typography>
                 <Typography variant="body1">
                   New Confirmed: {d.NewConfirmed}
                 </Typography>
@@ -53,6 +55,12 @@ export const CountryList = ({
                 </Typography>
                 <Typography variant="body1">
                   New Recovered: {d.NewRecovered}
+                </Typography>
+                <Typography variant="body1">
+                  Total Confirmed Case: {d.TotalConfirmed}
+                </Typography>
+                <Typography variant="body1">
+                  Total Deaths: {d.TotalDeaths}
                 </Typography>
               </CardContent>
             </Card>
