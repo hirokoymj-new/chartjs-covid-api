@@ -111,6 +111,39 @@ const data = {
 };
 ```
 
+# Covid-19 API
+
+**California 7days cases and deaths**
+
+```js
+https://corona.lmao.ninja/v2/historical/usacounties/california?lastdays=7
+```
+
+```js
+province: "california",
+county: "los angeles",
+timeline: {
+	cases: {
+		1/20/22: 2385721,
+		1/21/22: 2428744,
+		1/22/22: 2467797,
+		1/23/22: 2494097,
+		1/24/22: 2519778,
+		1/25/22: 2540075,
+		1/26/22: 2560768
+	},
+	deaths: {
+		1/20/22: 28282,
+		1/21/22: 28346,
+		1/22/22: 28417,
+		1/23/22: 28480,
+		1/24/22: 28507,
+		1/25/22: 28540,
+		1/26/22: 28630
+	}
+}
+```
+
 # References
 
 **Coronavirus COVID19 API**
