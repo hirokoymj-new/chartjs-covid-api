@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "App";
+import { BarChartView } from "containers/BarChartView";
 import { LineChart } from "components/LineChart";
+import { CovidDataView } from "containers/CovidDataView";
 
 ReactDOM.render(
   <React.StrictMode>
-    <LineChart />
+    <CovidDataView />
   </React.StrictMode>,
   document.getElementById("root")
 );

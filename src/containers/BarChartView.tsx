@@ -9,7 +9,7 @@ import { CountryList } from "components/CountryList";
 import { BarChart } from "components/BarChart";
 import { ResponseData, Country } from "types";
 
-const App: React.FunctionComponent = () => {
+export const BarChartView = () => {
   const [data, setData] = useState<ResponseData | undefined>(undefined);
   const [activeCountry, setActiveCountry] = useState<Country[]>([]);
 
@@ -23,6 +23,8 @@ const App: React.FunctionComponent = () => {
         (d) => d.CountryCode === "JP" || d.CountryCode === "US"
       )
     );
+    const output = data.Countries.map((d) => d.CountryCode);
+    console.log(output);
   };
 
   useEffect(() => {
@@ -73,5 +75,3 @@ const App: React.FunctionComponent = () => {
     </Container>
   );
 };
-
-export default App;

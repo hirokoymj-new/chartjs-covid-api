@@ -151,3 +151,39 @@ timeline: {
 - https://documenter.getpostman.com/view/10808728/SzS8rjbc
 - https://stackoverflow.com/questions/30065227/run-open-vscode-from-mac-terminal
 - https://github.com/reactchartjs/react-chartjs-2
+
+## Get the difference between an element of an array and the previous one
+
+- [Get the difference between an element of an array and the previous one](https://stackoverflow.com/questions/69339403/javascript-get-the-difference-between-an-element-of-an-array-and-the-previous-on?noredirect=1&lq=1)
+
+1.  You can use old-style for loop with the starting index as **1**
+
+```js
+const array = [
+  1633236300000, 1633244100000, 1633248000000, 1633252500000, 1633287600000,
+  1633291500000,
+];
+
+const result = [];
+for (let i = 1; i < array.length; ++i) {
+  result.push(array[i] - array[i - 1]);
+}
+
+console.log(result);
+```
+
+2. Use `reduce`
+
+```js
+const array = [
+  1633236300000, 1633244100000, 1633248000000, 1633252500000, 1633287600000,
+  1633291500000,
+];
+
+const result = array.reduce((acc, curr, i, src) => {
+  if (i !== 0) acc.push(curr - src[i - 1]);
+  return acc;
+}, []);
+
+console.log(result);
+```

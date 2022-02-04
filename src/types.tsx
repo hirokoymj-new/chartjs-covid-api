@@ -29,3 +29,12 @@ export type ResponseData = {
   Message: string;
   Global: GlobalData;
 };
+
+export type StatesResponseData = {
+  province: string;
+  county: string;
+  timeline: {
+    cases: {};
+    deaths: {};
+  };
+};
