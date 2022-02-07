@@ -1,4 +1,4 @@
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
 import get from "lodash/get";
 
@@ -16,9 +16,10 @@ const options = {
 
 interface IProps {
   data: StatesResponseData;
+  county: string;
 }
 
-const calculateNewCases = (array: number[]) => {
+const calculateDiff = (array: number[]) => {
   const result = array.reduce(
     (acc: number[], curr: number, i: number, src: number[]) => {
       if (i !== 0) acc.push(curr - src[i - 1]);
@@ -29,15 +30,14 @@ const calculateNewCases = (array: number[]) => {
   return result;
 };
 
-export const CovidBarChart = ({ data }: IProps) => {
-  const getChartData = () => {
+export const NewCasesChart = ({ data, county }: IProps) => {
+  const getCasesData = () => {
     const cases = get(data, "timeline.cases", {});
-    const county = get(data, "county", "").toUpperCase();
-    const label = `Covid-19 New Cases in ${county}`;
+    const label = `New Cases in ${county}`;
     const labels = Object.keys(cases);
     labels.shift();
     const values = Object.keys(cases).map((key) => cases[key]);
-    const chartData = calculateNewCases(values);
+    const chartData = calculateDiff(values);
 
     return {
       labels,
@@ -67,5 +67,31 @@ export const CovidBarChart = ({ data }: IProps) => {
     };
   };
 
-  return <Bar data={getChartData()} options={options} />;
+  return <Bar data={getCasesData()} options={options} />;
+};
+
+export const DeathsChart = ({ data, county }: IProps) => {
+  const getDeathsData = () => {
+    const deaths = get(data, "timeline.deaths", {});
+    const label = `Deaths in ${county}`;
+    const labels = Object.keys(deaths);
+    labels.shift();
+    const values = Object.keys(deaths).map((key) => deaths[key]);
+    const chartData = calculateDiff(values);
+
+    return {
+      labels,
+      datasets: [
+        {
+          label: label,
+          data: chartData,
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    };
+  };
+
+  return <Line data={getDeathsData()} options={options} />;
 };
