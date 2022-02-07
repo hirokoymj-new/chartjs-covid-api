@@ -16,8 +16,6 @@ export const CovidDataView = () => {
   );
   const [cityList, setCityList] = useState<string[]>([]);
   const [city, setCity] = useState("los angeles");
-  const [age, setAge] = React.useState(30); // <--------------(Like this).
-  const [formValues, setFormValues] = useState({ city: "" });
 
   const fetchData = async (city: string) => {
     fetch(
@@ -25,21 +23,29 @@ export const CovidDataView = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        const data_los_angeles = data.find(
+        const chartData = data.find(
           (d: StatesResponseData) => d.county === city
         );
-        setCityData(data_los_angeles);
-        const counties = data.map((d: StatesResponseData) => d.county);
-        setCityList(counties);
+        setCityData(chartData);
       });
+  };
+
+  const createCityList = (data: any) => {
+    const counties = data.map((d: StatesResponseData) => d.county);
+    setCityList(counties);
   };
 
   useEffect(() => {
     fetchData("los angeles");
+    cityData && createCityList(cityData);
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setCity(event.target.value as string);
+  const handleChange = (
+    e: React.ChangeEvent<{ value: unknown; name?: string }>
+  ) => {
+    const newVal = e.target.value as string;
+    setCity(newVal);
+    fetchData(city);
   };
 
   return (
@@ -57,15 +63,8 @@ export const CovidDataView = () => {
                 ))}
               </Select>
             </FormControl>
+            <h1>{city}</h1>
             <CovidBarChart data={cityData} />
-
-            <FormControl>
-              <Select value={age} onChange={handleChange}>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
           </Grid>
         </Grid>
       ) : (
